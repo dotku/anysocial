@@ -4,7 +4,7 @@ export default function FundraisingPage() {
   console.log("fundraising page");
   return (
     <>
-      <h2>Fundraising List</h2>
+      <h2 className="text-2xl my-3">Fundraising List</h2>
       <FundraisingList />
     </>
   );

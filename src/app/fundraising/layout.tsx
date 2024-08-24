@@ -12,5 +12,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <NextUIProvider>{children}</NextUIProvider>;
+  return <div className="max-w-4xl mx-auto">{children}</div>;
 }

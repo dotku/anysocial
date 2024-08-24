@@ -32,7 +32,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextUIProvider>
-          <Spinner />
           <ApolloLayout>
             <AppNavbar />
             <div className="max-w-7xl mx-auto">{children}</div>

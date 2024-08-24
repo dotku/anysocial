@@ -4,7 +4,14 @@ import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, gql } from "@apollo/client";
 import { DocumentNode } from "graphql";
 import { graphql } from "../../gql";
-import { Button, Spinner } from "@nextui-org/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Divider,
+  Spinner,
+} from "@nextui-org/react";
 
 // Types specific to the query
 interface FundraisingNode {
@@ -62,20 +69,23 @@ const FundraisingList = () => {
   );
   console.log("data", data);
 
-  if (!loading) return <Spinner color="primary" />; // Use a custom spinner component for better UI
+  if (loading) return <Spinner color="primary" />; // Use a custom spinner component for better UI
 
   if (error) return <p>Error! {error.message}</p>;
 
   return (
     <>
-      {data?.fundraisingCollection?.edges.map(
-        ({ node }: { node: FundraisingNode }) => (
-          <div key={node.id} title={node.name}>
-            <div>{node.name}</div>
-            <div>{node.description}</div>
-          </div>
-        )
-      )}
+      <div className="grid grid-cols-3 gap-3">
+        {data?.fundraisingCollection?.edges.map(
+          ({ node }: { node: FundraisingNode }) => (
+            <Card key={node.id} title={node.name}>
+              <CardHeader>{node.name}</CardHeader>
+              <Divider />
+              <CardBody>{node.description}</CardBody>
+            </Card>
+          )
+        )}
+      </div>
       {data?.fundraisingCollection?.pageInfo.hasNextPage && (
         <Button
           onClick={() => {
