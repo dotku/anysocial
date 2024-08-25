@@ -5,6 +5,7 @@ import AppNavbar from "@/components/AppNavbar";
 import { NextUIProvider, Spinner } from "@nextui-org/react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import ApolloLayout from "@/components/Layouts/ApolloLayout";
+import { Analytics } from "@vercel/analytics/react";
 
 const client = new ApolloClient({
   uri: `https://${process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF}.supabase.co/graphql/v1`,
@@ -32,6 +33,7 @@ export default function RootLayout({
             <div className="max-w-7xl mx-auto">{children}</div>
           </ApolloLayout>
         </NextUIProvider>
+        <Analytics />
       </body>
     </html>
   );

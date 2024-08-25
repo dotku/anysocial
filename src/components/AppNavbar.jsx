@@ -11,7 +11,7 @@ import {
 export default function AppNavbar() {
   return (
     <Navbar>
-      <NavbarBrand>
+      <NavbarBrand className="py-3">
         <p className="font-bold text-inherit">SOCIAL</p>
       </NavbarBrand>
       {/* <NavbarContent className="hidden sm:flex gap-4" justify="center">
