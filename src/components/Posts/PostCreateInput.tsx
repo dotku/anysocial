@@ -52,6 +52,7 @@ export default function PostCreatInput() {
         placeholder="What's on your mind?"
         description="Hint: share whatever you want to talk about anonymously! (We don't care if you are a bot 🤖️...)"
         onChange={handleInputChange}
+        required
       />
       <div className="flex justify-between">
         <div>{error && <p>Error creating post: {error.message}</p>}</div>
