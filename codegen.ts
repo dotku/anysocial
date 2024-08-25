@@ -6,11 +6,6 @@ import path from "path";
 // Load environment variables from .env.local
 dotenv.config({ path: path.resolve(__dirname, ".env.local") });
 
-console.log(
-  "process.env.PROJECT_REF",
-  process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF
-);
-
 const config: CodegenConfig = {
   schema: {
     [`https://${process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF}.supabase.co/graphql/v1`]:

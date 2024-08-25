@@ -6,11 +6,6 @@ import { NextUIProvider, Spinner } from "@nextui-org/react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import ApolloLayout from "@/components/Layouts/ApolloLayout";
 
-console.log(
-  "process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF",
-  process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF,
-);
-
 const client = new ApolloClient({
   uri: `https://${process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF}.supabase.co/graphql/v1`,
   cache: new InMemoryCache(),

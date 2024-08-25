@@ -14,7 +14,24 @@ import {
   Spinner,
 } from "@nextui-org/react";
 import moment from "moment";
-import Identity from "fake-identity";
+import { Faker, en, zh_CN, zh_TW, pt_BR } from "@faker-js/faker";
+export const faker = new Faker({
+  locale: [en, zh_CN, zh_TW, pt_BR],
+});
+
+export function createRandomUser() {
+  return {
+    userId: faker.string.uuid(),
+    username: faker.internet.userName(),
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    email: faker.internet.email(),
+    avatar: faker.image.avatar(),
+    password: faker.internet.password(),
+    birthdate: faker.date.birthdate(),
+    registeredAt: faker.date.past(),
+  };
+}
 
 interface PostNode {
   id: string;
@@ -93,15 +110,15 @@ const PostList = () => {
               <div className="flex">
                 <div className="pr-3">
                   <Avatar
-                    src={`https://avatar.iran.liara.run/public?username=${Identity.generate().emailAddress}`}
-                    name={Identity.generate().firstName}
+                    src={`https://avatar.iran.liara.run/public?username=${createRandomUser().email}`}
+                    name={.firstName}
                   />
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between">
                     <span className="text-large">
-                      {Identity.generate().firstName}{" "}
-                      {Identity.generate().lastName}
+                      {createRandomUser().firstName}{" "}
+                      {createRandomUser().lastName}
                     </span>
                     <span className="text-gray-500 ml-1 text-small">
                       {moment(node.created_at).fromNow()}
