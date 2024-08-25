@@ -14,16 +14,24 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
+  // Ensure headers is always a plain object
+  let safeHeaders = {};
+
+  // If headers is an instance of Headers or Map, convert to plain object
+  if (headers instanceof Headers) {
+    safeHeaders = Object.fromEntries(headers.entries());
+  } else if (headers && typeof headers === "object") {
+    safeHeaders = { ...headers };
+  }
   const token =
     localStorage.getItem("token") || process.env.NEXT_PUBLIC_SUPABASE_API_KEY;
   // return the headers to the context so httpLink can read them
   return {
-    headers: {
-      ...Object(headers),
+    headers: Object({
+      ...safeHeaders,
       apikey: token,
       authorization: token ? `Bearer ${token}` : "",
-    },
+    }),
   };
 });
 
