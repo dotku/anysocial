@@ -111,7 +111,7 @@ const PostList = () => {
                 <div className="pr-3">
                   <Avatar
                     src={`https://avatar.iran.liara.run/public?username=${createRandomUser().email}`}
-                    name={.firstName}
+                    name={createRandomUser().firstName}
                   />
                 </div>
                 <div className="flex-grow">
