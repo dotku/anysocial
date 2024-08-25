@@ -30,7 +30,7 @@ export default function RootLayout({
         <NextUIProvider>
           <ApolloLayout>
             <AppNavbar />
-            <div className="max-w-7xl mx-auto">{children}</div>
+            <div className="max-w-7xl mx-auto px-3">{children}</div>
           </ApolloLayout>
         </NextUIProvider>
         <Analytics />
