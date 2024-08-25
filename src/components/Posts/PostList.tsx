@@ -116,7 +116,7 @@ const PostList = () => {
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between">
-                    <span className="font-bold">
+                    <span className="font-semibold">
                       {createRandomUser().firstName}{" "}
                       {createRandomUser().lastName}
                     </span>

@@ -47,7 +47,7 @@ export default function PostCreatInput() {
         disabled={loading}
         variant="faded"
         placeholder="What's on your mind?"
-        description="Hint: share whatever you want to talk about"
+        description="Hint: share whatever you want to talk about, we don't care if you are a bot 🤖️."
         onChange={handleInputChange}
       />
       <div className="flex justify-between">
