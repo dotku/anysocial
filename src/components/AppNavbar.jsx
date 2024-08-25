@@ -14,7 +14,7 @@ export default function AppNavbar() {
       <NavbarBrand>
         <p className="font-bold text-inherit">ACME</p>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      {/* <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
             Features
@@ -30,8 +30,8 @@ export default function AppNavbar() {
             Integrations
           </Link>
         </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
+      </NavbarContent> */}
+      {/* <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           <Link href="#">Login</Link>
         </NavbarItem>
@@ -40,7 +40,7 @@ export default function AppNavbar() {
             Sign Up
           </Button>
         </NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
     </Navbar>
   );
 }

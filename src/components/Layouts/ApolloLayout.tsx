@@ -18,7 +18,6 @@ const authLink = setContext((_, { headers }) => {
   const token =
     localStorage.getItem("token") || process.env.NEXT_PUBLIC_SUPABASE_API_KEY;
   // return the headers to the context so httpLink can read them
-  console.log("[authLink] token", token);
   return {
     headers: {
       ...headers,

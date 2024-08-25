@@ -8,7 +8,7 @@ import ApolloLayout from "@/components/Layouts/ApolloLayout";
 
 console.log(
   "process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF",
-  process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF
+  process.env.NEXT_PUBLIC_SUPABASE_PROJECT_REF,
 );
 
 const client = new ApolloClient({

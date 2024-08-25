@@ -65,7 +65,7 @@ const allFundraisingQueryDocument: TypedDocumentNode<
 
 const FundraisingList = () => {
   const { data, fetchMore, loading, error } = useQuery(
-    allFundraisingQueryDocument
+    allFundraisingQueryDocument,
   );
   console.log("data", data);
 
@@ -83,7 +83,7 @@ const FundraisingList = () => {
               <Divider />
               <CardBody>{node.description}</CardBody>
             </Card>
-          )
+          ),
         )}
       </div>
       {data?.fundraisingCollection?.pageInfo.hasNextPage && (
