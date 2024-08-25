@@ -99,7 +99,7 @@ const PostList = () => {
       </div>
     );
 
-  if (error) return <p>Error! {error.message}</p>;
+  if (error) return <p>Error! {JSON.stringify(error)}</p>;
 
   return (
     <>
