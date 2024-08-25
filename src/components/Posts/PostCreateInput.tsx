@@ -3,6 +3,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import { useState } from "react";
+import { allPostQueryDocument } from "./PostList";
 
 // Define the GraphQL mutation
 const CREATE_POST_MUTATION = gql`
@@ -22,6 +23,8 @@ export default function PostCreatInput() {
   const [createPost, { data, loading, error }] = useMutation(
     CREATE_POST_MUTATION,
     {
+      refetchQueries: [{ query: allPostQueryDocument }], // Refetch post list
+      awaitRefetchQueries: true, // Wait for refetch to complete
       variables: { content: postContent },
     }
   );

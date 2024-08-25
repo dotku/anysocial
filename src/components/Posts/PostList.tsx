@@ -62,7 +62,7 @@ interface PostQueryVariables {
   cursor: string | null;
 }
 
-const allPostQueryDocument: TypedDocumentNode<
+export const allPostQueryDocument: TypedDocumentNode<
   { postsCollection: any }, // Replace `any` with your actual types
   { cursor: string | null }
 > = gql`
