@@ -3,7 +3,6 @@
 import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 import { useQuery, gql } from "@apollo/client";
 import { DocumentNode } from "graphql";
-import { graphql } from "../../gql";
 import {
   Avatar,
   Button,
@@ -15,6 +14,9 @@ import {
 } from "@nextui-org/react";
 import moment from "moment";
 import { Faker, en, zh_CN, zh_TW, pt_BR } from "@faker-js/faker";
+import AppAvatar from "@/components/AppAvatar"
+import Markdown from "react-markdown";
+
 export const faker = new Faker({
   locale: [en, zh_CN, zh_TW, pt_BR],
 });
@@ -109,10 +111,7 @@ const PostList = () => {
             <CardBody>
               <div className="flex">
                 <div className="pr-3">
-                  <Avatar
-                    src={`https://avatar.iran.liara.run/public?username=${createRandomUser().email}`}
-                    name={createRandomUser().firstName}
-                  />
+                  <AppAvatar user={createRandomUser()} />
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between">
@@ -124,7 +123,7 @@ const PostList = () => {
                       {moment(node.created_at).fromNow()}
                     </span>
                   </div>
-                  <div>{node.content}</div>
+                  <div><Markdown>{node.content}</Markdown></div>
                 </div>
               </div>
             </CardBody>
@@ -132,17 +131,32 @@ const PostList = () => {
         ))}
       </div>
       {data?.postsCollection?.pageInfo.hasNextPage && (
-        <Button
+        <div className="text-center mt-3"><Button
           onClick={() => {
+            console.log('data?.postsCollection?.pageInfo.endCursor', data?.postsCollection?.pageInfo.endCursor)
             fetchMore({
               variables: {
                 cursor: data?.postsCollection?.pageInfo.endCursor,
+              },
+              updateQuery: (prevResult, { fetchMoreResult }) => {
+                if (!fetchMoreResult) return prevResult;
+                return {
+                  ...prevResult,
+                  postsCollection: {
+                    ...prevResult.postsCollection,
+                    edges: [
+                      ...prevResult.postsCollection.edges,
+                      ...fetchMoreResult.postsCollection.edges,
+                    ],
+                    pageInfo: fetchMoreResult.postsCollection.pageInfo,
+                  },
+                };
               },
             });
           }}
         >
           Load More
-        </Button>
+        </Button></div>
       )}
     </>
   );
