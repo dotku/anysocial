@@ -1,5 +1,5 @@
 import { Avatar } from "@nextui-org/react";
-import { useAppAvatar } from "../hooks/useAppAvatar";
+import { useAppAvatar } from "@/hooks/useAppAvatar";
 
 export default function AppAvatar({user}) {
   const {avatarURL, loading} = useAppAvatar({user});
