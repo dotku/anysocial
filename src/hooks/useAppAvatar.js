@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 
 // @todo
-export async function getAvatarURL({ user, name }) {
+export async function getAvatarURL({
+  user,
+  name: provider,
+  style = "adventurer",
+  format = "svg",
+}) {
   const names = {
     liara: "liara",
     pravatar: "pravatar",
@@ -24,15 +29,15 @@ export async function getAvatarURL({ user, name }) {
     },
     { url: `https://robohash.org/${user.email}`, name: "robohash" },
     {
-      url: `https://api.dicebear.com/9.x/adventurer/svg?seed=${user.email}`,
+      url: `https://api.dicebear.com/9.x/${style}/${format}?seed=${user.email}`,
       name: "dicebear",
     },
     { url: `https://placebear.com/200/300?${user.email}`, name: "placebear" },
     { url: `https://placebeard.it/200x200?${user.email}`, name: "palcebeard" },
   ];
 
-  if (Object.keys(names).includes(name))
-    return urls.find((urlItem) => urlItem.name === name).url;
+  if (Object.keys(names).includes(provider))
+    return urls.find((urlItem) => urlItem.name === provider).url;
 
   const controllers = urls.map(() => new AbortController());
 
